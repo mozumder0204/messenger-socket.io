@@ -1,0 +1,38 @@
+<div class="chat-messages">
+  <div class="chat-messages-show-container" id="msgContainer">
+    <ul class="chat-messages-show-list" id="message-list"></ul>
+  </div>
+  <div class="chat-messages-create-container" *ngIf="isNameFound">
+    <input
+      class="chat-messages-create-input"
+      type="text"
+      [(ngModel)]="message"
+      placeholder="Write Message"
+      (keydown.enter)="SendMessage()"
+      #textControl
+    />
+    <button
+      (click)="toggled = !toggled"
+      [(emojiPickerIf)]="toggled"
+      [emojiPickerDirection]="'top'"
+      (emojiPickerSelect)="handleSelection($event)"
+    >
+      😊
+    </button>
+    <button class="chat-messages-create-button" (click)="SendMessage()">
+      Send
+    </button>
+  </div>
+  <div class="chat-messages-create-container" *ngIf="!isNameFound">
+    <input
+      class="chat-messages-create-input"
+      type="text"
+      placeholder="Write Your Name"
+      (keydown.enter)="assignName()"
+      [formControl]="myControl"
+    />
+    <button class="chat-messages-create-button" (click)="assignName()">
+      Submit
+    </button>
+  </div>
+</div>
