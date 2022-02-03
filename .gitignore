@@ -229,3 +229,7 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# System Files
+.DS_Store
+Thumbs.db
